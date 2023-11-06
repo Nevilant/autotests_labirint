@@ -3,12 +3,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 from base.base_class import Base
 
 
 class ProductPage(Base):
-
     """Прописываем локаторы нужнных нам элементов чтобы перейти в выбранный раздел
         и добавляем выбранный товар в корзину """
 
@@ -21,6 +19,7 @@ class ProductPage(Base):
     books_menu = "span.b-header-b-menu-e-link.top-link-menu.first-child"
     comics_manga_artbooks = "#header-genres > div > ul > li:nth-child(6) > span"
     manga = "#header-genres > div > ul > li:nth-child(6) > ul > li:nth-child(7) > a"
+    main_word = "h1[class='genre-name']"
 
     # Getters
 
@@ -36,6 +35,9 @@ class ProductPage(Base):
         return WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self.manga)))
 
+    def get_main_word(self):
+        return WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.main_word)))
 
     # Actions
 
@@ -57,4 +59,4 @@ class ProductPage(Base):
         self.hover_books_menu()
         self.hover_comics_manga_artbooks()
         self.click_manga()
-
+        self.assert_words(self.get_main_word(), 'Манга')
