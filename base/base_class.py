@@ -1,3 +1,6 @@
+import datetime
+
+
 class Base:
 
     def __init__(self, driver):
@@ -15,3 +18,10 @@ class Base:
         value_word = word.text
         assert value_word == result
         print('Good value word')
+
+    """Делаем скриншот"""
+
+    def get_screenshot(self):
+        now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")
+        name_screenshot = 'Screenshot' + now_date + '.png'
+        self.driver.save_screenshot("/home/nevi/Documents/git/Labirint_autotests/screens/" + name_screenshot)
