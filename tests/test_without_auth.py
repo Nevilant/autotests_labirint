@@ -4,6 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 
 from pages.main_page import MainPage
+from pages.product_page import ProductPage
 
 
 def test_with_auth():
@@ -14,6 +15,9 @@ def test_with_auth():
 
     mp = MainPage(driver)
     mp.open_website()
+
+    pp = ProductPage(driver)
+    pp.select_products()
 
 
 time.sleep(5)
