@@ -20,6 +20,7 @@ class ProductPage(Base):
     comics_manga_artbooks = "#header-genres > div > ul > li:nth-child(6) > span"
     manga = "#header-genres > div > ul > li:nth-child(6) > ul > li:nth-child(7) > a"
     main_word = "h1[class='genre-name']"
+    all_filters = "div.navisort-line-one.swiper-slide.swiper-slide-active span:nth-child(3) .navisort-item__content"
 
     # Getters
 
@@ -39,6 +40,10 @@ class ProductPage(Base):
         return WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self.main_word)))
 
+    def get_all_filters(self):
+        return WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.all_filters)))
+
     # Actions
 
     def hover_books_menu(self):
@@ -53,6 +58,10 @@ class ProductPage(Base):
         ActionChains(self.driver).move_to_element(self.get_manga()).click().perform()
         print('Page is open')
 
+    def click_all_filters(self):
+        ActionChains(self.driver).move_to_element(self.get_all_filters()).click().perform()
+        print('Filters is open')
+
     # Methods
 
     def select_products(self):
@@ -60,3 +69,4 @@ class ProductPage(Base):
         self.hover_comics_manga_artbooks()
         self.click_manga()
         self.assert_words(self.get_main_word(), 'Манга')
+        self.click_all_filters()
