@@ -12,5 +12,8 @@ def test_with_auth():
 
     print('Start test')
 
+    mp = MainPage(driver)
+    mp.open_website()
+
 
 time.sleep(5)
