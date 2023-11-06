@@ -6,6 +6,10 @@ from base.base_class import Base
 
 
 class MainPage(Base):
+
+    """Переходим на главную страницу сайта, для подтверждения того, что мы попали на нужную страницу
+        сравнивая элемент с нужной страницы и на той, куда переходим"""
+
     url = 'https://www.labirint.ru/'
 
     def __init__(self, driver):
