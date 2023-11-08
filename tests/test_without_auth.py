@@ -7,6 +7,7 @@ from base.base_class import Base
 
 from pages.main_page import MainPage
 from pages.product_page import ProductPage
+from pages.filters_page import FiltersPage
 
 
 def test_with_auth():
@@ -19,7 +20,12 @@ def test_with_auth():
     mp.open_website()
 
     pp = ProductPage(driver)
-    pp.select_products()
+    pp.select_category()
+
+    fp = FiltersPage(driver)
+    fp.filters_fields()
+
+    pp.select_product()
 
     screen = Base(driver)
     screen.get_screenshot()
