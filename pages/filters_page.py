@@ -19,10 +19,11 @@ class FiltersPage(Base):
 
     all_filters = "div.navisort-line-one.swiper-slide.swiper-slide-active span:nth-child(3) .navisort-item__content"
     list_publ_house = "#section-search-form > div:nth-child(4) > div.bl-name.block-pubhouse-bl-name"
-    publ_house = "#section-search-form > div:nth-child(4) .b-search-e-list-item:nth-child(2) label"
+    publ_house = "#section-search-form > div:nth-child(4) .b-search-e-list-item:nth-child(1) label"
     list_cover = "#section-search-form > div:nth-child(6) .bl-name"
     cover = "#section-search-form > div:nth-child(6) .inputs div:first-child"
     button_show = ".show-goods > input.show-goods__button"
+    main_value = ".navisort-part.navisort-head.navisort-part-7 > span.navisort-head-text.navisort-head-books-count"
 
     # Getters
 
@@ -49,6 +50,9 @@ class FiltersPage(Base):
     def get_button_show(self):
         return WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self.button_show)))
+
+    def get_main_value(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.main_value)))
 
     # Actions
 
@@ -81,6 +85,9 @@ class FiltersPage(Base):
         ActionChains(self.driver).move_to_element(self.get_button_show()).click().perform()
         print('Click button')
 
+    def hover_main_value(self):
+        ActionChains(self.driver).move_to_element(self.get_main_value()).perform()
+
     # Methods
 
     def filters_fields(self):
@@ -92,3 +99,5 @@ class FiltersPage(Base):
         self.click_cover()
         self.close_list_cover()
         self.click_button_show()
+        self.hover_main_value()
+        self.assert_words(self.get_main_value(), '37 книг')
