@@ -49,7 +49,7 @@ class CartPage(Base):
         self.click_button_cart()
 
     def use_checkout(self):
-        self.get_button_checkout()
+        self.click_button_checkout()
 
     def use_bubble_checkout(self):
-        self.get_bubble_checkout_button()
+        self.click_bubble_checkout_button()
