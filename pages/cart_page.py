@@ -19,6 +19,7 @@ class CartPage(Base):
     bubble_checkout_button = "div.b-basket-popinfo-e-block.js-good-added > div > a"
     main_word = "span.product-title"
     button_go_to_checkout = "button.btn.btn-primary.btn-large.fright.start-checkout-js"
+    checkout_word = "#app > div.checkout.set-width > div.checkout__header > h1"
 
     # Getters
 
@@ -36,6 +37,9 @@ class CartPage(Base):
 
     def get_button_go_to_checkout(self):
         return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.button_go_to_checkout)))
+
+    def get_checkout_word(self):
+        return WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkout_word)))
 
     # Actions
 
@@ -61,13 +65,16 @@ class CartPage(Base):
         self.click_button_cart()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
+        self.assert_words(self.get_checkout_word(), "Оформление заказа")
 
     def use_checkout(self):
         self.click_button_checkout()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
+        self.assert_words(self.get_checkout_word(), "Оформление заказа")
 
     def use_bubble_checkout(self):
         self.click_bubble_checkout_button()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
+        self.assert_words(self.get_checkout_word(), "Оформление заказа")
