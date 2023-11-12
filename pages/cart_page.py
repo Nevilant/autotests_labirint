@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.logger import Logger
 
 
 class CartPage(Base):
@@ -61,19 +62,27 @@ class CartPage(Base):
     # Methods
 
     def use_cart(self):
+
+        Logger.add_start_step(method="use_cart")
         self.click_button_cart()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
         self.assert_words(self.get_checkout_word(), "Оформление заказа")
+        Logger.add_end_step(url=self.driver.current_url, method="use_cart")
 
     def use_checkout(self):
+
+        Logger.add_start_step(method="use_checkout")
         self.click_button_checkout()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
         self.assert_words(self.get_checkout_word(), "Оформление заказа")
+        Logger.add_end_step(url=self.driver.current_url, method="use_checkout")
 
     def use_bubble_checkout(self):
+        Logger.add_start_step(method="use_bubble_checkout")
         self.click_bubble_checkout_button()
         self.assert_words(self.get_main_word(), "Токийские мстители. Том 11")
         self.click_button_go_to_checkout()
         self.assert_words(self.get_checkout_word(), "Оформление заказа")
+        Logger.add_end_step(url=self.driver.current_url, method="use_bubble_checkout")

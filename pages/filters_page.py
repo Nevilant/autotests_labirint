@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
+from utilities.logger import Logger
 
 
 class FiltersPage(Base):
@@ -86,6 +87,8 @@ class FiltersPage(Base):
     # Methods
 
     def filters_fields(self):
+
+        Logger.add_start_step(method="filters_fields")
         self.click_all_filters()
         self.click_list_publ_house()
         self.click_publ_house()
@@ -96,3 +99,4 @@ class FiltersPage(Base):
         self.click_button_show()
         self.hover_main_value()
         self.assert_words(self.get_main_value(), '37 книг')
+        Logger.add_end_step(url=self.driver.current_url, method="filters_fields")
