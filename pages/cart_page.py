@@ -8,6 +8,8 @@ from base.base_class import Base
 
 class CartPage(Base):
 
+    """Попадаем в корзину и переходим на страницу с оформлением товара"""
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
