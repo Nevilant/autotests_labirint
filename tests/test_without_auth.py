@@ -11,11 +11,9 @@ from pages.filters_page import FiltersPage
 from pages.cart_page import CartPage
 
 
-def test_without_auth_1():
+def test_without_auth_1(set_up, set_group):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
-
-    print('Start test')
 
     mp = MainPage(driver)
     mp.open_website()
@@ -34,12 +32,12 @@ def test_without_auth_1():
     screen = Base(driver)
     screen.get_screenshot()
 
+    driver.quit()
 
-def test_without_auth_2():
+
+def test_without_auth_2(set_up):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
-
-    print('Start test')
 
     mp = MainPage(driver)
     mp.open_website()
@@ -58,12 +56,12 @@ def test_without_auth_2():
     screen = Base(driver)
     screen.get_screenshot()
 
+    driver.quit()
 
-def test_without_auth_3():
+
+def test_without_auth_3(set_up):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
-
-    print('Start test')
 
     mp = MainPage(driver)
     mp.open_website()
@@ -81,3 +79,5 @@ def test_without_auth_3():
 
     screen = Base(driver)
     screen.get_screenshot()
+
+    driver.quit()
