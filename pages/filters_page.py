@@ -60,27 +60,21 @@ class FiltersPage(Base):
 
     def click_list_publ_house(self):
         ActionChains(self.driver).move_to_element(self.get_list_publ_house()).click().perform()
-        print('Open list of publishing houses')
 
     def click_publ_house(self):
         ActionChains(self.driver).move_to_element(self.get_publ_house()).click().perform()
-        print('Select publishing house')
 
     def close_list_publ_house(self):
         ActionChains(self.driver).move_to_element(self.get_list_publ_house()).click().perform()
-        print('Close list of publishing houses')
 
     def click_list_cover(self):
         ActionChains(self.driver).move_to_element(self.get_list_cover()).click().perform()
-        print('Open list of covers')
 
     def click_cover(self):
         ActionChains(self.driver).move_to_element(self.get_cover()).click().perform()
-        print('Select type cover')
 
     def close_list_cover(self):
         ActionChains(self.driver).move_to_element(self.get_list_cover()).click().perform()
-        print('Close list of covers')
 
     def click_button_show(self):
         ActionChains(self.driver).move_to_element(self.get_button_show()).click().perform()

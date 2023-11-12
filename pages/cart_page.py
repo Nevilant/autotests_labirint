@@ -51,15 +51,12 @@ class CartPage(Base):
 
     def click_button_checkout(self):
         ActionChains(self.driver).move_to_element(self.get_button_checkout()).click().perform()
-        print("Click button checkout")
 
     def click_bubble_checkout_button(self):
         ActionChains(self.driver).move_to_element(self.get_bubble_checkout_button()).click().perform()
-        print("Click bubble checkout button")
 
     def click_button_go_to_checkout(self):
         ActionChains(self.driver).move_to_element(self.get_button_go_to_checkout()).click().perform()
-        print("Click button go to checkout")
 
     # Methods
 

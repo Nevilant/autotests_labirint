@@ -52,15 +52,12 @@ class ProductPage(Base):
 
     def hover_books_menu(self):
         ActionChains(self.driver).move_to_element(self.get_books_menu()).perform()
-        print('First dropdown menu is open')
 
     def hover_comics_manga_artbooks(self):
         ActionChains(self.driver).move_to_element(self.get_comics_manga_artbooks()).perform()
-        print('Second dropdown menu is open')
 
     def click_manga(self):
         ActionChains(self.driver).move_to_element(self.get_manga()).click().perform()
-        print('Page is open')
 
     def click_button_add_in_cart_product_1(self):
         ActionChains(self.driver).move_to_element(self.get_button_add_in_cart_product_1()).click().perform()
