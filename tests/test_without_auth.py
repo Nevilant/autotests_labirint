@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 
@@ -11,6 +12,7 @@ from pages.filters_page import FiltersPage
 from pages.cart_page import CartPage
 
 
+@allure.description("Test without authorization 1")
 def test_without_auth_1(set_up, set_group):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
@@ -35,6 +37,7 @@ def test_without_auth_1(set_up, set_group):
     driver.quit()
 
 
+@allure.description("Test without authorization 2")
 def test_without_auth_2(set_up):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
@@ -59,6 +62,7 @@ def test_without_auth_2(set_up):
     driver.quit()
 
 
+@allure.description("Test without authorization 3")
 def test_without_auth_3(set_up):
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)

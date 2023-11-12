@@ -1,5 +1,6 @@
 import time
 
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.wait import WebDriverWait
@@ -67,16 +68,16 @@ class ProductPage(Base):
     # Methods
 
     def select_category(self):
-
-        Logger.add_start_step(method="select_category")
-        self.hover_books_menu()
-        self.hover_comics_manga_artbooks()
-        self.click_manga()
-        self.assert_words(self.get_main_word(), 'Манга')
-        Logger.add_end_step(url=self.driver.current_url, method="select_category")
+        with allure.step("Select category"):
+            Logger.add_start_step(method="select_category")
+            self.hover_books_menu()
+            self.hover_comics_manga_artbooks()
+            self.click_manga()
+            self.assert_words(self.get_main_word(), 'Манга')
+            Logger.add_end_step(url=self.driver.current_url, method="select_category")
 
     def select_product(self):
-
-        Logger.add_start_step(method="select_product")
-        self.click_button_add_in_cart_product_1()
-        Logger.add_end_step(url=self.driver.current_url, method="select_product")
+        with allure.step("Select product"):
+            Logger.add_start_step(method="select_product")
+            self.click_button_add_in_cart_product_1()
+            Logger.add_end_step(url=self.driver.current_url, method="select_product")
