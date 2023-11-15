@@ -1,4 +1,5 @@
 import allure
+from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -8,7 +9,6 @@ from utilities.logger import Logger
 
 
 class MainPage(Base):
-
     """Переходим на главную страницу сайта, для подтверждения того, что мы попали на нужную страницу
         сравнивая элемент с нужной страницы и на той, куда переходим"""
 
@@ -21,6 +21,8 @@ class MainPage(Base):
     # Locators
 
     main_word = '[class="autodiscounts-content"] h2 a'
+    sign_in = ".b-header-b-personal-wrapper > ul > li:nth-child(4) > a"
+    code_field = "input[value='+7']"
 
     # Getters
 
@@ -28,7 +30,24 @@ class MainPage(Base):
         return WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self.main_word)))
 
+    def get_sign_in(self):
+        return WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.sign_in)))
+
+    def get_code_field(self):
+        return WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.code_field)))
+
     # Actions
+
+    def click_sign_in(self):
+        ActionChains(self.driver).move_to_element(self.get_sign_in()).click().perform()
+
+    def click_code_field(self):
+        ActionChains(self.driver).move_to_element(self.get_code_field()).click().perform()
+        self.get_code_field().send_keys(Keys.CONTROL + 'a')
+        self.get_code_field().send_keys(Keys.BACKSPACE)
+        self.get_code_field().send_keys("6E3C-4307-B5DC")
 
     # Methods
 
@@ -40,3 +59,10 @@ class MainPage(Base):
             self.get_current_url()
             self.assert_words(self.get_main_word(), 'Лучшая покупка дня')
             Logger.add_end_step(url=self.driver.current_url, method="open_website")
+
+    def authorization(self):
+        with allure.step("Autorization"):
+            Logger.add_start_step(method="authorization")
+            self.click_sign_in()
+            self.click_code_field()
+            Logger.add_end_step(url=self.driver.current_url, method="authorization")
