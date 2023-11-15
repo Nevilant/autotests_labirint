@@ -99,5 +99,5 @@ class FiltersPage(Base):
             self.close_list_cover()
             self.click_button_show()
             self.hover_main_value()
-            self.assert_words(self.get_main_value(), '37 книг')
+            self.assert_words(self.get_main_value(), '38 книг')
             Logger.add_end_step(url=self.driver.current_url, method="filters_fields")
