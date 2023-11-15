@@ -19,7 +19,7 @@ class CartPage(Base):
     # Locators
 
     button_cart = " ul > li.b-header-b-personal-e-list-item.have-dropdown.last-child.have-dropdown-notouch > a"
-    button_checkout = "#buy961816"
+    button_checkout = "buy961816"
     bubble_checkout_button = "div.b-basket-popinfo-e-block.js-good-added > div > a"
     main_word = "span.product-title"
     button_go_to_checkout = "button.btn.btn-primary.btn-large.fright.start-checkout-js"
