@@ -23,6 +23,7 @@ class MainPage(Base):
     main_word = '[class="autodiscounts-content"] h2 a'
     sign_in = ".b-header-b-personal-wrapper > ul > li:nth-child(4) > a"
     code_field = "input[value='+7']"
+    button_login = "#g-recap-0-btn"
 
     # Getters
 
@@ -38,6 +39,10 @@ class MainPage(Base):
         return WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, self.code_field)))
 
+    def get_button_login(self):
+        return WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, self.button_login)))
+
     # Actions
 
     def click_sign_in(self):
@@ -48,6 +53,9 @@ class MainPage(Base):
         self.get_code_field().send_keys(Keys.CONTROL + 'a')
         self.get_code_field().send_keys(Keys.BACKSPACE)
         self.get_code_field().send_keys("6E3C-4307-B5DC")
+
+    def click_button_login(self):
+        ActionChains(self.driver).move_to_element(self.get_button_login()).click().perform()
 
     # Methods
 
@@ -65,4 +73,5 @@ class MainPage(Base):
             Logger.add_start_step(method="authorization")
             self.click_sign_in()
             self.click_code_field()
+            self.click_button_login()
             Logger.add_end_step(url=self.driver.current_url, method="authorization")
