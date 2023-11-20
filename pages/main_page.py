@@ -61,17 +61,13 @@ class MainPage(Base):
 
     def open_website(self):
         with allure.step("Open website"):
-            Logger.add_start_step(method="open_website")
             self.driver.get(self.url)
             self.driver.maximize_window()
             self.get_current_url()
             self.assert_words(self.get_main_word(), 'Лучшая покупка дня')
-            Logger.add_end_step(url=self.driver.current_url, method="open_website")
 
     def authorization(self):
         with allure.step("Autorization"):
-            Logger.add_start_step(method="authorization")
             self.click_sign_in()
             self.click_code_field()
             self.click_button_login()
-            Logger.add_end_step(url=self.driver.current_url, method="authorization")

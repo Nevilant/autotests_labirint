@@ -89,7 +89,6 @@ class FiltersPage(Base):
 
     def filters_fields(self):
         with allure.step("Filters fields"):
-            Logger.add_start_step(method="filters_fields")
             self.click_all_filters()
             self.click_list_publ_house()
             self.click_publ_house()
@@ -100,4 +99,4 @@ class FiltersPage(Base):
             self.click_button_show()
             self.hover_main_value()
             self.assert_words(self.get_main_value(), '38 книг')
-            Logger.add_end_step(url=self.driver.current_url, method="filters_fields")
+
