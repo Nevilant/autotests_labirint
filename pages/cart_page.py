@@ -5,7 +5,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from base.base_class import Base
-from utilities.logger import Logger
 
 
 class CartPage(Base):

@@ -64,18 +64,14 @@ class ProductPage(Base):
 
     def select_category(self):
         with allure.step("Select category"):
-            Logger.add_start_step(method="select_category")
             self.hover_books_menu()
             self.hover_comics_manga_artbooks()
             self.click_manga()
             self.assert_words(self.get_main_word(), 'Манга')
-            Logger.add_end_step(url=self.driver.current_url, method="select_category")
 
     def select_product(self):
         with allure.step("Select product"):
-            Logger.add_start_step(method="select_product")
             self.click_button_add_in_cart_product_1()
-            Logger.add_end_step(url=self.driver.current_url, method="select_product")
 
 
 class ProductPageWithAuth(Base):
