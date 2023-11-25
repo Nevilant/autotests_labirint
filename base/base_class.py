@@ -3,6 +3,8 @@ import datetime
 
 class Base:
 
+    path_for_screens = "./screens/"
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -23,5 +25,6 @@ class Base:
 
     def get_screenshot(self):
         now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%M.%S")
-        name_screenshot = 'Screenshot' + now_date + '.png'
-        self.driver.save_screenshot("/home/nevi/Documents/git/Labirint_autotests/screens/" + name_screenshot)
+        name_screenshot = '_Screenshot' + now_date + '.png'
+
+        self.driver.save_screenshot(self.path_for_screens + name_screenshot)
