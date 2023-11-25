@@ -1,3 +1,4 @@
 selenium==4.15.2
 pytest
-pytest_ordering
+pytest-ordering
+allure-pytest
