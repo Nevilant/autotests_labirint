@@ -1,6 +1,7 @@
 import time
 
 import allure
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 
@@ -13,7 +14,11 @@ from pages.cart_page import CartPage
 
 
 @allure.description("Test without authorization 1")
+@pytest.mark.run(order=1)
 def test_without_auth_1(set_up, set_group):
+
+    """Тестируем путь покупки товара с переходмо в корзину через значок корзины в хедере"""
+
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
 
@@ -38,7 +43,11 @@ def test_without_auth_1(set_up, set_group):
 
 
 @allure.description("Test without authorization 2")
+@pytest.mark.run(order=2)
 def test_without_auth_2(set_up):
+
+    """Тестируем путь покупки товара с переходмо в корзину через значок корзины в карточке товара"""
+
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
 
@@ -63,7 +72,11 @@ def test_without_auth_2(set_up):
 
 
 @allure.description("Test without authorization 3")
+@pytest.mark.run(order=3)
 def test_without_auth_3(set_up):
+
+    """Тестируем путь покупки товара с переходмо в корзину через значок корзины в всплывающем окне"""
+
     service = ChromeService(executable_path='/home/nevi/Documents/utilities/chromedriver-linux64/chromedriver')
     driver = webdriver.Chrome(service=service)
 
