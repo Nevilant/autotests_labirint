@@ -1,15 +1,16 @@
 import pytest
 
-
-@pytest.fixture()
-def set_up():
-    print("Start tests")
-    yield
-    print("Finish tests")
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
-@pytest.fixture(scope="module")
-def set_group():
-    print("Starting to test")
-    yield
-    print("Finished testing")
+@pytest.fixture(scope="function", autouse=True)
+def driver():
+    options = Options()
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    # options.add_argument("--window-size=1920,1080")
+    driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
+    yield driver
+    driver.quit()
